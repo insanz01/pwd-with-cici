@@ -1,8 +1,7 @@
 <?php
 session_start();
 include 'koneksi.php';
-// var_dump($_POST);
-// die;
+
 if (isset($_POST['username'])) {
   $username = $_POST['username'];
   $password = $_POST['password'];
@@ -18,7 +17,12 @@ if (isset($_POST['username'])) {
 
     header('location:index.php');
   } else {
-    echo "<script> alert('Username dan Password salah!'); </script>";
+    echo "<script>
+    var hasil = alert('Username dan Password salah!');
+      if(!hasil) {
+        window.location.href = 'http://localhost/pertemuan3crud/formlogin.php';
+      }
+      </script>";
     // header('location:formlogin.php');
   }
 }

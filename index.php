@@ -1,8 +1,6 @@
 <?php
 session_start();
 
-// die($_SESSION['username']);
-
 if (!$_SESSION['username']) {
 	header('location:formlogin.php');
 }
