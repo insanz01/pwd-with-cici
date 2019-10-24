@@ -18,11 +18,10 @@ if (isset($_POST['username'])) {
     header('location:index.php');
   } else {
     echo "<script>
-    var hasil = alert('Username dan Password salah!');
-      if(!hasil) {
-        window.location.href = 'http://localhost/pertemuan3crud/formlogin.php';
-      }
-      </script>";
-    // header('location:formlogin.php');
+    alert('Username dan Password salah!');
+
+    window.location = 'http://localhost/pertemuan3crud/formlogin.php'
+    
+    </script>";
   }
 }

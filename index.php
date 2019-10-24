@@ -1,9 +1,13 @@
 <?php
 session_start();
 
-if (!$_SESSION['username']) {
-	header('location:formlogin.php');
+if (!isset($_SESSION['username'])) {
+	echo "<script>
+			alert('Kamu harus login terlebih dahulu!'); 
+			window.location = 'formlogin.php';
+    </script>";
 }
+
 ?>
 
 <!DOCTYPE>
