@@ -1,5 +1,6 @@
-var tombol = document.getElementById("tombol-cari");
-
-tombol.addEventListener('click', function () {
-  alert("tombol berfungsi");
+$(document).ready(function () {
+  $('#tombol-cari').hide();
+  $('#keyword').on('keyup', function () {
+    $('#container').load('admin/js/search.php?keyword=' + $('#keyword').val());
+  });
 });

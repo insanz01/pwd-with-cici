@@ -16,78 +16,99 @@ if (!isset($_SESSION['username'])) {
 
 <head>
 	<title>SQL dan MYSQL</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="asset/css/font-awesome.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="asset/css/datepicker.css">
 	<?php
 	include "koneksi.php";
-	include "library/import.php";
-	include "navbar.php";
+	// include "library/import.php";
+	// include "navbar.php";
 	?>
 </head>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
 <body>
 	<div class="container">
-		<div class="row">
-			<div class="col-lg-12">
-				<form action="" method="post" class="form-inline">
-					<!-- <div class="col-lg-10"> -->
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="index.php">home</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<!-- <li><a href="#">Page 1</a></li> -->
+					<!-- <li>
+						<a href="beranda.php">Beranda</a>
+					</li> -->
+					<!-- <li><a href="index.php">Data</a></!-->
+					<li>
+						<a href="logout.php">Logout</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<form action="" method="post">
+			<div class="row">
+				<div class="col-lg-12">
 					<div class="form-group">
 						<input type="text" name="keyword" size="40" class="form-control" autofocus placeholder="masukan keyword" autocomplete="off" id="keyword">
 					</div>
-					<!-- </div> -->
-					<!-- <div class="col-lg-2"> -->
-					<div class="form-group">
-						<!-- <label for="inputEmail" class="col-lg-2 control-label"></label> -->
-						<button class="btn btn-danger" type="submit" name="cari" id="tombol-cari">Cari!</button>
-					</div>
-					<!-- </div> -->
-				</form>
+				</div>
+				<!-- <div class="col-lg-2"> -->
+				<!-- <div class="form-group"> -->
+				<button class="btn btn-danger" type="submit" name="cari" id="tombol-cari">Cari!</button>
+				<!-- </div> -->
+				<!-- </div> -->
 			</div>
-		</div>
+		</form>
+		<a href="#" class="btn btn-success mb-2" id="tambah">Create</a>
 		<div class="row">
-			<a href="#" class="btn btn-success" id="tambah">Create</a>
-			<table class="table table-striped table-hover ">
-				<thead>
-					<tr>
-						<th>NIM</th>
-						<th>Nama</th>
-						<th>Email</th>
-						<th>Alamat</th>
-						<th>Jenis Kelamin</th>
-						<th>Tangal Lahir</th>
-						<th>Aksi</th>
-					</tr>
-				</thead>
-				<?php
-				include 'koneksi.php';
-				$query = mysqli_query($conn, "SELECT *FROM mahasiswa ORDER BY nim DESC") or die(mysqli_error($conn));
-				if (mysqli_num_rows($query) == 0) {
-					echo '<tbody>
-		    <tr class="active">
-		      <td colspan="5">Tidak ada data yang di entrikan </td>
-		    </tr>
-		  </tbody>';
-				} else {
-					$no = 1;
-					while ($data = mysqli_fetch_assoc($query)) {
-						echo '<tbody>
-		    <tr class="active">';
-						echo '<td>' . $data['nim'] . '</td>';
-						echo '<td>' . $data['nama'] . '</td>';
-						echo '<td>' . $data['email'] . '</td>';
-						echo '<td>' . $data['alamat'] . '</td>';
-						echo '<td>' . $data['jkel'] . '</td>';
-						echo '<td>' . $data['tgllhr'] . '</td>';
+			<div class="col-lg-12">
+				<div id="container">
+					<table class="table table-striped table-hover ">
+						<thead>
+							<tr>
+								<th>NIM</th>
+								<th>Nama</th>
+								<th>Email</th>
+								<th>Alamat</th>
+								<th>Jenis Kelamin</th>
+								<th>Tangal Lahir</th>
+								<th>Aksi</th>
+							</tr>
+						</thead>
+						<?php
+						include 'koneksi.php';
+						$query = mysqli_query($conn, "SELECT *FROM mahasiswa ORDER BY nim DESC") or die(mysqli_error($conn));
+						if (mysqli_num_rows($query) == 0) {
+							echo '<tbody>
+						<tr class="active">
+							<td colspan="5">Tidak ada data yang di entrikan </td>
+						</tr>
+					</tbody>';
+						} else {
+							$no = 1;
+							while ($data = mysqli_fetch_assoc($query)) {
+								echo '<tbody>
+						<tr class="active">';
+								echo '<td>' . $data['nim'] . '</td>';
+								echo '<td>' . $data['nama'] . '</td>';
+								echo '<td>' . $data['email'] . '</td>';
+								echo '<td>' . $data['alamat'] . '</td>';
+								echo '<td>' . $data['jkel'] . '</td>';
+								echo '<td>' . $data['tgllhr'] . '</td>';
 
 
-						echo '<td><a class="btn btn-primary" href="updatemahasiswa.php?nim=' . $data['nim'] . '">Update</a>
-		     <a class="btn btn-danger" href="hapusmahasiswa.php?ID=' . $data['nim'] . '">Delete</a></tr>';
-						echo '</tr>';
-						$no++;
-					}
-				}
+								echo '<td><a class="btn btn-primary" href="updatemahasiswa.php?nim=' . $data['nim'] . '">Update</a>
+						 <a class="btn btn-danger" href="hapusmahasiswa.php?ID=' . $data['nim'] . '">Delete</a></tr>';
+								echo '</tr>';
+								$no++;
+							}
+						}
 
-				?>
-			</table>
+						?>
+					</table>
+				</div>
+			</div>
 
 			<div class="modal fade" id="myModal" role="dialog">
 				<div class="modal-dialog">
@@ -162,6 +183,12 @@ if (!isset($_SESSION['username'])) {
 		</div>
 	</div>
 </body>
+
+<script src="admin/js/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="admin/js/main.js"></script>
 
 <script>
 	const validasi = function(form) {
