@@ -2,6 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['username'])) {
+
 	echo "<script>
 			alert('Kamu harus login terlebih dahulu!'); 
 			window.location = 'formlogin.php';
@@ -25,6 +26,23 @@ if (!isset($_SESSION['username'])) {
 
 <body>
 	<div class="container">
+		<div class="row">
+			<div class="col-lg-12">
+				<form action="" method="post" class="form-inline">
+					<!-- <div class="col-lg-10"> -->
+					<div class="form-group">
+						<input type="text" name="keyword" size="40" class="form-control" autofocus placeholder="masukan keyword" autocomplete="off" id="keyword">
+					</div>
+					<!-- </div> -->
+					<!-- <div class="col-lg-2"> -->
+					<div class="form-group">
+						<!-- <label for="inputEmail" class="col-lg-2 control-label"></label> -->
+						<button class="btn btn-danger" type="submit" name="cari" id="tombol-cari">Cari!</button>
+					</div>
+					<!-- </div> -->
+				</form>
+			</div>
+		</div>
 		<div class="row">
 			<a href="#" class="btn btn-success" id="tambah">Create</a>
 			<table class="table table-striped table-hover ">
