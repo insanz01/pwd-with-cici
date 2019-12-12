@@ -2,9 +2,6 @@
 require "../../koneksi.php";
 $keyword = $_GET["keyword"];
 $query = mysqli_query($conn, "SELECT * FROM mahasiswa WHERE nim LIKE '%$keyword%' OR email LIKE '%$keyword%' OR nama LIKE '%$keyword%'");
-
-// var_dump($query);
-
 ?>
 
 <table class="table table-striped table-hover ">

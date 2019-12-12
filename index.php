@@ -60,7 +60,13 @@ if (!isset($_SESSION['username'])) {
 				<!-- </div> -->
 			</div>
 		</form>
-		<a href="#" class="btn btn-success mb-2" id="tambah">Create</a>
+		<div class="row">
+			<div class="col-lg-12 mb-2">
+				<a href="#" class="btn btn-success" id="tambah">Create</a>
+				<a href="cetak_lap.php" class="btn btn-danger mx-2">Cetak</a>
+				<a href="mahasiswa.json" target="_blank" class="btn btn-info">JSON</a>
+			</div>
+		</div>
 		<div class="row">
 			<div class="col-lg-12">
 				<div id="container">
@@ -77,17 +83,22 @@ if (!isset($_SESSION['username'])) {
 							</tr>
 						</thead>
 						<?php
+						$file = "mahasiswa.json";
+						// $mahasiswa = file_get_contents($file);
+						// $datajson = json_decode($mahasiswa, true);
+
 						include 'koneksi.php';
 						$query = mysqli_query($conn, "SELECT *FROM mahasiswa ORDER BY nim DESC") or die(mysqli_error($conn));
 						if (mysqli_num_rows($query) == 0) {
 							echo '<tbody>
 						<tr class="active">
-							<td colspan="5">Tidak ada data yang di entrikan </td>
+						<td colspan="5">Tidak ada data yang di entrikan </td>
 						</tr>
-					</tbody>';
+						</tbody>';
 						} else {
 							$no = 1;
-							while ($data = mysqli_fetch_assoc($query)) {
+							while ($data = mysqli_fetch_array($query)) {
+								// foreach ($datajson as $data) {
 								echo '<tbody>
 						<tr class="active">';
 								echo '<td>' . $data['nim'] . '</td>';

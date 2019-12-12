@@ -1,0 +1,42 @@
+[
+    {
+        "nim": "1600018221",
+        "nama": "fauzan",
+        "email": "",
+        "jkel": "p",
+        "alamat": "belakang",
+        "tgllhr": "2019-04-16"
+    },
+    {
+        "nim": "1600018020",
+        "nama": "Arda",
+        "email": "",
+        "jkel": "l",
+        "alamat": "yogyakarta",
+        "tgllhr": "2019-10-01"
+    },
+    {
+        "nim": "123123",
+        "nama": "nama saya",
+        "email": "namasaya@email.com",
+        "jkel": "l",
+        "alamat": "asdlfadf",
+        "tgllhr": "2019-10-11"
+    },
+    {
+        "nim": "1600018021",
+        "nama": "FITRIANA PUSPA",
+        "email": "cicix123@gmail.com",
+        "jkel": "p",
+        "alamat": "Banjarnegara",
+        "tgllhr": "2019-12-04"
+    },
+    {
+        "nim": "1600018022",
+        "nama": "SIAPAPUN ITU",
+        "email": "insankamil.uad@gmail.com",
+        "jkel": "l",
+        "alamat": "Banjarmasin",
+        "tgllhr": "2019-12-03"
+    }
+]
